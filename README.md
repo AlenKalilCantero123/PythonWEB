@@ -98,3 +98,4 @@ El proyecto tiene las siguientes funcionalidades:
 - Django 5.1.4
 
 Puedes agregar más detalles específicos, como instrucciones sobre cómo configurar el entorno virtual, base de datos, o instalar dependencias, si lo necesitas.
+# PythonWEB
