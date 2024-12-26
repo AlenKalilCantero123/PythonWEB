@@ -1,90 +1,74 @@
-<<<<<<< HEAD
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
-=======
 # blog/views.py
 
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.contrib import messages  # Para mostrar mensajes de error o éxito
->>>>>>> 581eb5e (about agregado)
 from .models import Author, Category, Post
 from .forms import AuthorForm, CategoryForm, PostForm
 
+# Vista de prueba para asegurarse de que el servidor esté funcionando
 def index(request):
     return HttpResponse("Hello, World!")
 
+# Página de inicio (home)
 def home(request):
     return render(request, 'blog/home.html')
 
+# Página "Acerca de mí"
+def about(request):
+    # Información del propietario para mostrar en la página "Acerca de mí"
+    owner_info = {
+        'name': 'Tu Nombre',
+        'avatar_url': 'https://www.example.com/tu_avatar.jpg',  # Asegúrate de tener una URL válida para tu avatar
+        'bio': 'Aquí va tu biografía.',
+        'contact': 'tu_email@example.com'
+    }
+    return render(request, 'blog/about.html', {'owner_info': owner_info})
+
+# Crear un autor
 def create_author(request):
     if request.method == 'POST':
         form = AuthorForm(request.POST)
-<<<<<<< HEAD
         if form.is_valid():
             form.save()
-            return redirect('home')
-    else:
-        form = AuthorForm()
-    
-    # Obtener el nombre del modelo de manera correcta
-=======
-        
-        # Verificar si el formulario es válido
-        if form.is_valid():
-            # No es necesario verificar la existencia de un correo electrónico ya que lo eliminamos del modelo
-            # Si el formulario es válido, guardar el autor
-            form.save()
-            
-            messages.success(request, "El autor fue creado exitosamente.")
-            return redirect('home')  # Redirigir a la página de inicio (o a una lista de autores si lo prefieres)
+            return redirect('home')  # Redirige al home después de guardar el autor
     else:
         form = AuthorForm()
 
-    # Obtener el nombre del modelo para pasar al template
->>>>>>> 581eb5e (about agregado)
-    model_name = Author._meta.model_name  # Usamos Author aquí directamente
+    model_name = Author._meta.model_name
 
     return render(request, 'blog/create_author.html', {'form': form, 'model_name': model_name})
 
+# Crear una categoría
 def create_category(request):
     if request.method == 'POST':
         form = CategoryForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('home')  # Redirige al home después de guardar la categoría
     else:
         form = CategoryForm()
-    model_name = Category._meta.model_name  # Usamos Category aquí directamente
+    
+    model_name = Category._meta.model_name
+
     return render(request, 'blog/create_category.html', {'form': form, 'model_name': model_name})
 
+# Crear un post
 def create_post(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('home')  # Redirige al home después de guardar el post
     else:
         form = PostForm()
-    model_name = Post._meta.model_name  # Usamos Post aquí directamente
+    
+    model_name = Post._meta.model_name
+
     return render(request, 'blog/create_post.html', {'form': form, 'model_name': model_name})
 
+# Buscar posts
 def search_posts(request):
-    query = request.GET.get('q', '')
-    results = Post.objects.filter(title__icontains=query) if query else Post.objects.none()
-    return render(request, 'blog/search.html', {'query': query, 'results': results})
-<<<<<<< HEAD
-=======
+    query = request.GET.get('q', '')  # Obtener el query de la URL
+    results = Post.objects.filter(title__icontains=query) if query else []  # Consulta optimizada si no hay query
 
-# Nueva vista: Acerca de mí
-def about(request):
-    # Información acerca del dueño de la página
-    owner_info = {
-        'name': 'Juan Pérez',
-        'bio': 'Soy un desarrollador web apasionado por crear aplicaciones fáciles de usar.',
-        'contact': 'juanperez@example.com',
-        'avatar_url': '/static/images/owner_avatar.jpg',  # Ruta de la imagen del avatar
-    }
-    
-    return render(request, 'blog/about.html', {'owner_info': owner_info})
->>>>>>> 581eb5e (about agregado)
+    return render(request, 'blog/search.html', {'query': query, 'results': results})

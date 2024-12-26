@@ -1,18 +1,10 @@
-<<<<<<< HEAD
-=======
-# blog/models.py
-
->>>>>>> 581eb5e (about agregado)
 from django.db import models
 
 # Modelo de Autor
 class Author(models.Model):
     name = models.CharField(max_length=100, verbose_name="Nombre")
-<<<<<<< HEAD
-    email = models.EmailField(unique=True, verbose_name="Correo Electrónico")
-=======
->>>>>>> 581eb5e (about agregado)
-    bio = models.TextField(blank=True, null=True, verbose_name="Biografía")  # Campo opcional para más información
+    email = models.EmailField(null=True)  # Permitir valores nulos
+    bio = models.TextField(blank=True, verbose_name="Biografía")  # Solo 'blank=True' es suficiente
 
     class Meta:
         verbose_name = "Autor"
@@ -24,7 +16,7 @@ class Author(models.Model):
 # Modelo de Categoría
 class Category(models.Model):
     name = models.CharField(max_length=50, verbose_name="Nombre")
-    description = models.TextField(blank=True, null=True, verbose_name="Descripción")
+    description = models.TextField(blank=True, verbose_name="Descripción")  # Solo 'blank=True' es suficiente
 
     class Meta:
         verbose_name = "Categoría"

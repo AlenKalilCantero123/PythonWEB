@@ -1,14 +1,7 @@
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog</title>
-=======
-<!-- blog/templates/blog/base.html -->
 {% load static %}
 
+
+<!-- blog/templates/blog/base.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -16,23 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Mi Blog{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
->>>>>>> 581eb5e (about agregado)
 </head>
 <body>
     <header>
         <nav>
             <a href="{% url 'home' %}">Home</a>
-<<<<<<< HEAD
-            <a href="{% url 'create_author' %}">Add Author</a>
-            <a href="{% url 'create_category' %}">Add Category</a>
-            <a href="{% url 'create_post' %}">Add Post</a>
-            <a href="{% url 'search_posts' %}">Search Posts</a>
-        </nav>
-    </header>
-    <main>
-        {% block content %}{% endblock %}
-    </main>
-=======
             <a href="{% url 'about' %}">Acerca de mí</a>
             <a href="{% url 'create_author' %}">Crear Autor</a>
             <a href="{% url 'create_category' %}">Crear Categoría</a>
@@ -42,12 +23,12 @@
     </header>
 
     <main>
-        {% block content %}{% endblock %}
+        {% block content %}
+        {% endblock %}
     </main>
 
     <footer>
         <p>Mi Blog - Todos los derechos reservados</p>
     </footer>
->>>>>>> 581eb5e (about agregado)
 </body>
 </html>
