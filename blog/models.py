@@ -1,9 +1,17 @@
+<<<<<<< HEAD
+=======
+# blog/models.py
+
+>>>>>>> 581eb5e (about agregado)
 from django.db import models
 
 # Modelo de Autor
 class Author(models.Model):
     name = models.CharField(max_length=100, verbose_name="Nombre")
+<<<<<<< HEAD
     email = models.EmailField(unique=True, verbose_name="Correo Electrónico")
+=======
+>>>>>>> 581eb5e (about agregado)
     bio = models.TextField(blank=True, null=True, verbose_name="Biografía")  # Campo opcional para más información
 
     class Meta:

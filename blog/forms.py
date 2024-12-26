@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+# blog/forms.py
+
+>>>>>>> 581eb5e (about agregado)
 from django import forms
 from .models import Author, Category, Post
 

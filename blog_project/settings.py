@@ -55,8 +55,13 @@ ROOT_URLCONF = 'blog_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+<<<<<<< HEAD
         'DIRS': [],
         'APP_DIRS': True,
+=======
+        'DIRS': [BASE_DIR / 'templates'],  # Aquí buscamos las plantillas globales
+        'APP_DIRS': True,  # Esto permite que Django busque plantillas dentro de las carpetas 'templates' de cada app
+>>>>>>> 581eb5e (about agregado)
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -118,6 +123,12 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+<<<<<<< HEAD
+=======
+# Esta es una opción que ayuda a buscar archivos estáticos
+STATICFILES_DIRS = [BASE_DIR / "static"]
+
+>>>>>>> 581eb5e (about agregado)
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
