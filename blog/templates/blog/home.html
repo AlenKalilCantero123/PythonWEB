@@ -1,5 +1,45 @@
 {% extends 'blog/base.html' %}
 
+{% block title %}Inicio{% endblock %}
+
 {% block content %}
-<h1>Welcome to the Blog</h1>
+    <h1>Lista de Publicaciones</h1>
+
+    {% if posts %}
+        <ul>
+            {% for post in posts %}
+                <li>
+                    <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
+                    <p><strong>{{ post.author.name }}</strong> - {{ post.created_at|date:"d M Y" }}</p>
+                    <p>{{ post.content|slice:":200" }}...</p>
+                    <a href="{% url 'post_detail' post.pk %}">Leer más</a>
+                    
+                    {% if user.is_authenticated %}
+                        <!-- Formulario para eliminar el post -->
+                        <form method="post" action="{% url 'delete_post_home' post.pk %}">
+                            {% csrf_token %}
+                            <button type="submit" style="color: red;" onclick="return confirm('¿Estás seguro de que deseas eliminar esta publicación?')">Eliminar</button>
+                        </form>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+
+        <!-- Paginación de posts -->
+        <div class="pagination">
+            {% if posts.has_previous %}
+                <a href="?page=1">&laquo; Primera</a>
+                <a href="?page={{ posts.previous_page_number }}">Anterior</a>
+            {% endif %}
+
+            <span>Página {{ posts.number }} de {{ posts.paginator.num_pages }}</span>
+
+            {% if posts.has_next %}
+                <a href="?page={{ posts.next_page_number }}">Siguiente</a>
+                <a href="?page={{ posts.paginator.num_pages }}">Última &raquo;</a>
+            {% endif %}
+        </div>
+    {% else %}
+        <p>No hay publicaciones aún.</p>
+    {% endif %}
 {% endblock %}

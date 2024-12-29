@@ -1,10 +1,12 @@
-{% extends 'blog/base.html' %}
+<!-- templates/blog/create_post.html -->
+{% extends 'base_generic.html' %}
 
 {% block content %}
-<h1>Create {{ model_name }}</h1> <!-- Usar model_name desde el contexto -->
+<h1>Crear publicación</h1>  <!-- Título de la página -->
+
 <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Save</button>
+    {{ form.as_p }}  <!-- Muestra el formulario en formato de párrafos -->
+    <button type="submit">Guardar</button>  <!-- Botón para enviar el formulario -->
 </form>
 {% endblock %}

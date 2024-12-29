@@ -3,7 +3,7 @@ from django.db import models
 # Modelo de Autor
 class Author(models.Model):
     name = models.CharField(max_length=100, verbose_name="Nombre")
-    email = models.EmailField(null=True)  # Permitir valores nulos
+    email = models.EmailField(null=True, blank=True)  # Permitir valores nulos y en blanco
     bio = models.TextField(blank=True, verbose_name="Biografía")  # Solo 'blank=True' es suficiente
 
     class Meta:

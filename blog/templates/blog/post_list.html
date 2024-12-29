@@ -1,0 +1,33 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h1>Lista de Publicaciones</h1>
+
+    {% if posts %}
+        <ul>
+            {% for post in posts %}
+                <li>
+                    <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
+                    <p><strong>{{ post.author.name }}</strong> - {{ post.created_at|date:"d M Y" }}</p>
+                    <p>{{ post.content|slice:":200" }}...</p>
+                    <a href="{% url 'post_detail' post.pk %}">Leer más</a>
+                </li>
+            {% endfor %}
+        </ul>
+
+        {% if posts.has_previous %}
+            <a href="?page=1">&laquo; Primera</a>
+            <a href="?page={{ posts.previous_page_number }}">Anterior</a>
+        {% endif %}
+
+        <span>Página {{ posts.number }} de {{ posts.paginator.num_pages }}</span>
+
+        {% if posts.has_next %}
+            <a href="?page={{ posts.next_page_number }}">Siguiente</a>
+            <a href="?page={{ posts.paginator.num_pages }}">Última &raquo;</a>
+        {% endif %}
+        
+    {% else %}
+        <p>No hay publicaciones aún.</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,164 @@
+/* Estilo global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body y fondo de página */
+body {
+    background-color: #f4f4f9;
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Estilos de cabecera y navegación */
+header {
+    background-color: #333;
+    color: white;
+    padding: 15px 0;
+}
+
+header nav {
+    text-align: center;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 18px;
+}
+
+header nav a:hover {
+    color: #f4f4f9;
+    text-decoration: underline;
+}
+
+/* Estilos de contenedor principal */
+main {
+    padding: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Título principal (home) */
+h1 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #333;
+}
+
+h1 span {
+    color: #3498db;
+}
+
+/* Estilos de lista de posts */
+ul.posts-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.posts-list li {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+ul.posts-list li:hover {
+    transform: translateY(-5px);
+}
+
+ul.posts-list li h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+ul.posts-list li p {
+    font-size: 16px;
+    color: #7f8c8d;
+    margin-bottom: 10px;
+}
+
+ul.posts-list li a {
+    font-weight: bold;
+    color: #3498db;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+ul.posts-list li a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos del pie de página */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 40px;
+}
+
+footer p {
+    font-size: 14px;
+}
+
+/* Estilos de "Acerca de mí" */
+.about-container {
+    margin-top: 40px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.about-container h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.about-container p {
+    font-size: 16px;
+    color: #7f8c8d;
+}
+
+.about-container img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+/* Estilos para la paginación de los posts */
+.pagination {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.pagination a {
+    color: #3498db;
+    text-decoration: none;
+    margin: 0 5px;
+    font-size: 18px;
+}
+
+.pagination a:hover {
+    text-decoration: underline;
+}
+
+.pagination span {
+    color: #7f8c8d;
+    font-size: 18px;
+    margin: 0 5px;
+}

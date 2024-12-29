@@ -1,9 +1,7 @@
 {% load static %}
 
-
-<!-- blog/templates/blog/base.html -->
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,22 +11,32 @@
 <body>
     <header>
         <nav>
-            <a href="{% url 'home' %}">Home</a>
-            <a href="{% url 'about' %}">Acerca de mí</a>
-            <a href="{% url 'create_author' %}">Crear Autor</a>
-            <a href="{% url 'create_category' %}">Crear Categoría</a>
-            <a href="{% url 'create_post' %}">Crear Post</a>
-            <a href="{% url 'search_posts' %}">Buscar Posts</a>
+            <ul>
+                <li><a href="{% url 'home' %}">Inicio</a></li>
+                <li><a href="{% url 'about' %}">Acerca de mí</a></li>
+                <!-- Corregir el enlace de "Publicaciones" para que apunte a 'publicaciones' -->
+                <li><a href="{% url 'pages' %}">Publicaciones</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'profile' %}">Perfil</a></li>
+
+                    <!-- Formulario para cerrar sesión -->
+                    <form action="{% url 'logout' %}" method="POST" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit">Cerrar sesión</button>
+                    </form>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Iniciar sesión</a></li>
+                    <li><a href="{% url 'signup' %}">Registrarse</a></li>
+                {% endif %}
+            </ul>
         </nav>
     </header>
-
     <main>
         {% block content %}
         {% endblock %}
     </main>
-
     <footer>
-        <p>Mi Blog - Todos los derechos reservados</p>
+        <p>&copy; 2024 Mi Blog</p>
     </footer>
 </body>
 </html>

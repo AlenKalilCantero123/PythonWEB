@@ -112,4 +112,11 @@ STATICFILES_DIRS = [
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# For production, configure settings like allowed hosts, databases, and secret key securely.
+# Redirección después de iniciar sesión
+LOGIN_REDIRECT_URL = 'home'  # Redirige al home después de login
+
+# Redirección al login si el usuario no está autenticado
+LOGIN_URL = 'login'  # Asegura que la URL para login esté correctamente configurada
+
+# Redirección después de cerrar sesión
+LOGOUT_REDIRECT_URL = 'home'  # Redirige al home después de logout

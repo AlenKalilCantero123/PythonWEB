@@ -1,6 +1,7 @@
 from django import forms
 from .models import Author, Category, Post
 
+
 class AuthorForm(forms.ModelForm):
     class Meta:
         model = Author
@@ -14,4 +15,4 @@ class CategoryForm(forms.ModelForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'content', 'author', 'category']  # Asegúrate de que los campos existan en tu modelo
+        fields = ['title', 'content', 'category']  # Elimina 'author'

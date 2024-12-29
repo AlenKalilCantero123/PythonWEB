@@ -1,14 +1,15 @@
-<!-- blog/templates/blog/about.html -->
 {% extends 'blog/base.html' %}
 
 {% block title %}Acerca de mí{% endblock %}
 
 {% block content %}
-    <h1>Acerca de mí</h1>
-    <div class="owner-info">
-        <img src="{{ owner_info.avatar_url }}" alt="Avatar de {{ owner_info.name }}" class="avatar">
-        <h2>{{ owner_info.name }}</h2>
-        <p><strong>Biografía:</strong> {{ owner_info.bio }}</p>
-        <p><strong>Contacto:</strong> <a href="mailto:{{ owner_info.contact }}">{{ owner_info.contact }}</a></p>
+    <div class="about-container">
+        <h1>Acerca de mí</h1>
+        <div class="about-info">
+            <img src="{{ owner_info.avatar_url }}" alt="Avatar" class="avatar">
+            <h2>{{ owner_info.name }}</h2>
+            <p>{{ owner_info.bio }}</p>
+            <p>Contacto: <a href="mailto:{{ owner_info.contact }}">{{ owner_info.contact }}</a></p>
+        </div>
     </div>
 {% endblock %}
